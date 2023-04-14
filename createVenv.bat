@@ -1,0 +1,9 @@
+@echo off
+echo Creating virtual environment...
+python -m venv venv
+echo Activating virtual environment...
+call venv\Scripts\activate.bat
+echo Installing required libraries...
+pip install Pillow pillow-heif pillow-avif-plugin PyQt5
+echo Done. The virtual environment is ready.
+pause
