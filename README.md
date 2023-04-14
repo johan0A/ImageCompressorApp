@@ -1,1 +1,1 @@
-# bulk_image_compresse
+# ImageCompressorApp
