@@ -15,7 +15,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 
 class EmittingStream(QtCore.QObject):
-
+    """smt to make the textEdit widget work for console display thing idk how it works but it works"""
+    
     textWritten = QtCore.pyqtSignal(str)
 
     def write(self, text):
@@ -74,6 +75,10 @@ def compress_image(input_path, output_path, format=None, quality=85):
 
 
 def compress_images(input_paths, output_folder, format=None, quality=85, progress_callback=None):
+    """only works well with HEIF and not JPEG for some obscure reason
+    todo: fix JPEG compression
+    (btw idk if it works for all the other formats but it should \_(ツ)_/¯)
+    """
     for i in range(len(input_paths)):
         input_path = input_paths[i]
         file_name, file_ext = os.path.splitext(os.path.basename(input_path))
@@ -84,9 +89,10 @@ def compress_images(input_paths, output_folder, format=None, quality=85, progres
         compress_image(input_path, output_path, format=(format or file_ext[1:]).lower(), quality=quality)
         compressed_size = os.path.getsize(output_path)
 
-        print(f"Compressed size: {compressed_size} bytes\n")
+        print(f"Compressed size: {compressed_size} bytes ({round(compressed_size / original_size * 100, 2)}% of original size)\n")
 
         if compressed_size > original_size:
+            print("Compressed image is larger than original, using original instead\n")
             os.remove(output_path)
             shutil.copy(input_path, output_path)
         
@@ -157,10 +163,11 @@ class ImageCompressorApp(QMainWindow):
         self.textEdit = QTextEdit(self)
         self.textEdit.setReadOnly(True)
         layout.addWidget(self.textEdit)
+        
+        self.resize(700, 500)
 
     def normalOutputWritten(self, text):
-        """Append text to the QTextEdit."""
-        # Maybe QTextEdit.append() works as well, but this is how I do it:
+        """smt to make the textEdit widget work for console display thing idk how it works but it works"""
         cursor = self.textEdit.textCursor()
         cursor.movePosition(QtGui.QTextCursor.End)
         cursor.insertText(text)
@@ -184,6 +191,7 @@ class ImageCompressorApp(QMainWindow):
             self.output_folder_label.setText(f'Output Folder: {folder_path}')
 
     def compress_images(self):
+
         if not hasattr(self, 'input_paths') or not hasattr(self, 'output_folder'):
             return
 
