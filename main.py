@@ -226,7 +226,6 @@ if __name__ == '__main__':
     window.show()
     app.exec_()
 
-# # Example usage
 # input_paths = select_images()
 # print(input_paths)
 # output_folder = select_output_folder()
