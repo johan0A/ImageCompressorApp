@@ -7,7 +7,7 @@ added_files = [
     # ('path/to/datafile.ext', 'destination/folder'),
 ]
 
-a = Analysis(['ImageCompressorApp\main.py'],
+a = Analysis(['main.py'],
              pathex=[],
              binaries=[],
              datas=added_files,
@@ -32,4 +32,4 @@ exe = EXE(pyz,
           strip=False,
           upx=True,
           console=False,
-          icon="icon.ico")
+          icon="icon\icon.ico")

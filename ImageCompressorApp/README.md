@@ -1,1 +1,0 @@
-# bulk_image_compresse
