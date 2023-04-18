@@ -8,7 +8,7 @@ added_files = [
 ]
 
 a = Analysis(['ImageCompressorApp\main.py'],
-             pathex=['C:\\Users\\arnau\\OneDrive\\Images\\Documents\\image processing application project\\git\\ImageCompressorApp\\ImageCompressorApp'],
+             pathex=[],
              binaries=[],
              datas=added_files,
              hookspath=[],
