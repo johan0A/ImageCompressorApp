@@ -3,8 +3,6 @@
 block_cipher = None
 
 added_files = [
-    # Add any additional data files required by the script here, e.g.:
-    # ('path/to/datafile.ext', 'destination/folder'),
 ]
 
 a = Analysis(['ImageCompressorApp\main.py'],
