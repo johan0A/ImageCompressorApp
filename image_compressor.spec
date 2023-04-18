@@ -31,5 +31,5 @@ exe = EXE(pyz,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
-          console=True,
-          icon=None)
+          console=False,
+          icon="icon.ico")
